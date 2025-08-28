@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CKD Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Chronic Kidney Disease Detection</h1>
+        <form method="POST" action="/predict">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="blood_pressure">Blood Pressure:</label>
+            <input type="number" id="blood_pressure" name="blood_pressure" required>
+
+            <label for="albumin">Albumin:</label>
+            <input type="number" id="albumin" name="albumin" step="0.1" required>
+
+            <label for="sugar">Sugar:</label>
+            <input type="number" id="sugar" name="sugar" step="0.1" required>
+
+            <label for="serum_creatinine">Serum Creatinine:</label>
+            <input type="number" id="serum_creatinine" name="serum_creatinine" step="0.1" required>
+
+            <button type="submit">Detect CKD</button>
+        </form>
+        {% if result %}
+            <div class="result">
+                <h2>Result: {{ result }}</h2>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
